@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'colors.dart';
 
 /*
 TEXT STYLES
@@ -15,6 +16,17 @@ const TextStyle kTextStyleRemainingTasks = TextStyle(
   color: Colors.white,
 );
 
+const TextStyle kTSofTFofBottomSheet = TextStyle(
+  fontSize: 20,
+  color: kColorMain,
+);
+
+const TextStyle kTSTitleBottomSheet = TextStyle(
+  color: kColorMain,
+  fontSize: 30,
+  fontWeight: FontWeight.w800,
+);
+
 /*
 BOX DECORATIONS
  */
@@ -25,4 +37,30 @@ const BoxDecoration kBDTasksContainer = BoxDecoration(
     topLeft: Radius.circular(30),
     topRight: Radius.circular(30),
   ),
+);
+
+/*
+INPUT DECORATION
+ */
+
+InputDecoration kIDBottonSheet = InputDecoration(
+  enabledBorder: UnderlineInputBorder(
+    borderSide: BorderSide(color: kColorMain),
+  ),
+  focusedBorder: UnderlineInputBorder(
+    borderSide: BorderSide(color: kColorMain, width: 2),
+  ),
+);
+
+/*
+BUTTON STYLES
+ */
+
+ButtonStyle kBSBottomSheet = ButtonStyle(
+  backgroundColor: MaterialStateProperty.resolveWith((states) {
+    return kColorMain;
+  }),
+  overlayColor: MaterialStateProperty.resolveWith((states) {
+    return Colors.purple;
+  }),
 );

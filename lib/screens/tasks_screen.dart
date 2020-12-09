@@ -3,17 +3,13 @@ import 'package:todo_list/values/strings.dart';
 import 'package:todo_list/values/styles.dart';
 import 'package:todo_list/values/colors.dart';
 import 'package:todo_list/components/task_list.dart';
+import 'package:todo_list/screens/add_task.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kColorMain,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        backgroundColor: kColorMain,
-        onPressed: null,
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -58,6 +54,16 @@ class TasksScreen extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          backgroundColor: kColorMain,
+          onPressed: () {
+            showModalBottomSheet(
+                context: context,
+                builder: (BuildContext context) {
+                  return AddTaskScreen();
+                });
+          }),
     );
   }
 }
