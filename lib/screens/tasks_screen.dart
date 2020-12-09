@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/values/strings.dart';
 import 'package:todo_list/values/styles.dart';
+import 'package:todo_list/values/colors.dart';
+import 'package:todo_list/components/task_list.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: kColorMain,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        backgroundColor: kColorMain,
+        onPressed: null,
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -23,7 +30,7 @@ class TasksScreen extends StatelessWidget {
                   child: Icon(
                     Icons.list,
                     size: 45,
-                    color: Colors.lightBlueAccent,
+                    color: kColorMain,
                   ),
                   radius: 30,
                   backgroundColor: Colors.white,
@@ -44,7 +51,9 @@ class TasksScreen extends StatelessWidget {
           SizedBox(height: 15),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: kBDTasksContainer,
+              child: TaskList(),
             ),
           ),
         ],
