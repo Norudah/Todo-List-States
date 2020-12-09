@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list/values/strings.dart';
+import 'package:todo_list/values/styles.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -28,20 +30,13 @@ class TasksScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  "Todo app'",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 40,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  kStringsAppTitle,
+                  style: kTextStyleAppTitle,
                 ),
                 SizedBox(height: 2),
                 Text(
-                  "13 Tasks",
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white,
-                  ),
+                  kStringsRemainingTasks,
+                  style: kTextStyleRemainingTasks,
                 ),
               ],
             ),
@@ -49,12 +44,7 @@ class TasksScreen extends StatelessWidget {
           SizedBox(height: 15),
           Expanded(
             child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                  )),
+              decoration: kBDTasksContainer,
             ),
           ),
         ],
