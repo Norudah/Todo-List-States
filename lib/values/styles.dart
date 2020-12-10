@@ -27,6 +27,10 @@ const TextStyle kTSTitleBottomSheet = TextStyle(
   fontWeight: FontWeight.w800,
 );
 
+const TextStyle kTSLineThrough = TextStyle(
+  decoration: TextDecoration.lineThrough,
+);
+
 /*
 BOX DECORATIONS
  */
