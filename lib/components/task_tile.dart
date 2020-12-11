@@ -7,7 +7,7 @@ class TaskTile extends StatelessWidget {
   final bool isChecked;
   final Function onChange;
 
-  const TaskTile({
+  TaskTile({
     @required this.label,
     @required this.isChecked,
     @required this.onChange,

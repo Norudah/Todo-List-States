@@ -3,8 +3,14 @@ import 'package:todo_list/values/colors.dart';
 import 'package:todo_list/values/styles.dart';
 
 class AddTaskScreen extends StatelessWidget {
+  final Function addTaskCallback;
+
+  AddTaskScreen({this.addTaskCallback});
+
   @override
   Widget build(BuildContext context) {
+    String newTaskTitle;
+
     return Container(
       color: kColorBottomSheet,
       child: Container(
@@ -24,6 +30,10 @@ class AddTaskScreen extends StatelessWidget {
                 decoration: kIDBottonSheet,
                 style: kTSofTFofBottomSheet,
                 textAlign: TextAlign.center,
+                onChanged: (editedValue) {
+                  newTaskTitle = editedValue;
+                  print("Textfield edited : $newTaskTitle");
+                },
               ),
             ),
             SizedBox(height: 20),
@@ -35,7 +45,9 @@ class AddTaskScreen extends StatelessWidget {
                 ),
               ),
               style: kBSBottomSheet,
-              onPressed: () => print("button pressed"),
+              onPressed: () {
+                addTaskCallback(newTaskTitle);
+              },
             ),
           ],
         ),

@@ -3,28 +3,28 @@ import 'package:todo_list/models/Task.class.dart';
 import 'task_tile.dart';
 
 class TaskList extends StatefulWidget {
+  final List<Task> taskList;
+
+  TaskList({
+    @required this.taskList,
+  });
+
   @override
   _TaskListState createState() => _TaskListState();
 }
 
 class _TaskListState extends State<TaskList> {
-  List<Task> taskList = [
-    Task(name: "Git gud.", isChecked: false),
-    Task(name: "Develop and extend its network", isChecked: false),
-    Task(name: "Get ingaged in its 1st mission", isChecked: false),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: taskList.length,
+      itemCount: widget.taskList.length,
       itemBuilder: (context, index) {
         return TaskTile(
-            label: taskList[index].name,
-            isChecked: taskList[index].isChecked,
+            label: widget.taskList[index].name,
+            isChecked: widget.taskList[index].isChecked,
             onChange: (bool newValue) {
               setState(() {
-                taskList[index].checkTrigger();
+                widget.taskList[index].checkTrigger();
               });
             });
       },
