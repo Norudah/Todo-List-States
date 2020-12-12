@@ -1,25 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_list/models/Task.class.dart';
+import 'package:todo_list/models/TaskBank.class.dart';
 import 'package:todo_list/values/strings.dart';
 import 'package:todo_list/values/styles.dart';
 import 'package:todo_list/values/colors.dart';
 import 'package:todo_list/components/task_list.dart';
 import 'package:todo_list/screens/add_task.dart';
 
-class TasksScreen extends StatefulWidget {
-  @override
-  _TasksScreenState createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
+class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Task> taskList = [
-      Task(name: "Git gud.", isChecked: false),
-      Task(name: "Develop and extend its network", isChecked: false),
-      Task(name: "Get ingaged in its 1st mission", isChecked: false),
-    ];
-
     return Scaffold(
       backgroundColor: kColorMain,
       body: Column(
@@ -50,7 +41,7 @@ class _TasksScreenState extends State<TasksScreen> {
                 ),
                 SizedBox(height: 2),
                 Text(
-                  "${taskList.length.toString()} $kStringsRemainingTasks",
+                  "${Provider.of<TaskBank>(context).numberOfTasks.toString()} tasks",
                   style: kTextStyleRemainingTasks,
                 ),
               ],
@@ -61,9 +52,7 @@ class _TasksScreenState extends State<TasksScreen> {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: kBDTasksContainer,
-              child: TaskList(
-                taskList: taskList,
-              ),
+              child: TaskList(),
             ),
           ),
         ],
@@ -75,16 +64,7 @@ class _TasksScreenState extends State<TasksScreen> {
             showModalBottomSheet(
                 context: context,
                 builder: (BuildContext context) {
-                  return AddTaskScreen(
-                    addTaskCallback: (String newTaskToBeAdded) {
-                      setState(() {
-                        taskList.add(Task(name: newTaskToBeAdded, isChecked: false));
-                      });
-                      Navigator.pop(context);
-                      print(taskList);
-                      print("Nombre de task dans taskList : ${taskList.length}");
-                    },
-                  );
+                  return AddTaskScreen();
                 });
           }),
     );

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_list/models/TaskBank.class.dart';
 import 'package:todo_list/values/colors.dart';
 import 'package:todo_list/values/styles.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  final Function addTaskCallback;
-
-  AddTaskScreen({this.addTaskCallback});
-
   @override
   Widget build(BuildContext context) {
     String newTaskTitle;
@@ -46,7 +44,8 @@ class AddTaskScreen extends StatelessWidget {
               ),
               style: kBSBottomSheet,
               onPressed: () {
-                addTaskCallback(newTaskTitle);
+                Provider.of<TaskBank>(context, listen: false).addNewTask(newTaskTitle);
+                Navigator.pop(context);
               },
             ),
           ],
