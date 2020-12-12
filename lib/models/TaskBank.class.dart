@@ -6,7 +6,7 @@ import 'Task.class.dart';
 class TaskBank extends ChangeNotifier {
   List<Task> taskList = [
     Task(name: "Git gud at programming"),
-    Task(name: "being binary fluent with computers"),
+    Task(name: "Being binary fluent with computers"),
     Task(name: "Develop and extend its network"),
     Task(name: "Get assigned in its 1st mission"),
   ];
